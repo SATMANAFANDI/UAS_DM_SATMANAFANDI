@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Machine Learning</title>
+    <!-- Tambahkan tautan Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background:linear-gradient(0deg, rgba(14, 13, 14, 0.3), rgba(97, 97, 97, 0.3)), url('/static/images/jakarta.jpg');
+            background-size: cover ;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        .container {
+            background-image: linear-gradient(to right, rgb(215, 214, 214) , rgb(164, 164, 162));
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            width: 40%;
+            
+          
+            margin-top: 100px;
+        }
+
+        h1 {
+            color: #0048ff;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+
+        p {
+            font-weight: bold;
+            color: #4967ff;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">DataSet</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="container">
+        <h1 class="mb-4">Prediksi Index Pencemaran Udara DKI Jakarta</h1>
+
+        <form action="/" method="post">
+            {%if dataInputan=='' %}
+            <div class="form-group">
+                <div class="row">
+                 <div class="col-md-6">
+                     <label for="pm10">pm10</label>
+                     <input type="text" class="form-control" id="pm10" name="pm10" placeholder="Masukkan Ukuran Pm10 " required/>
+                 </div><div class="col-md-6">
+                     <label for="pm25">pm25</label>
+                 <input type="text" class="form-control" id="pm25" name="pm25" placeholder="Masukkan Ukuran Pm25" required/>
+ 
+                 </div>
+                </div>
+              </div>
+ 
+             <div class="form-group">
+                 <div class="row">
+                     <div class="col-md-6">
+                         <label for="so2">so2</label>
+                         <input type="text" class="form-control" id="so2" name="so2" placeholder="Masukkan Ukuran So2" required/>
+                     </div><div class="col-md-6">
+                         <label for="co">co</label>
+                         <input type="text" class="form-control" id="co" name="co" placeholder="Masukkan Ukuran Co" required/>
+                     </div>
+                 </div>
+             </div>
+              
+ 
+             <div class="form-group">
+                 <div class="row">
+                     <div class="col-md-6">
+                         <label for="o3">o3</label>
+                         <input type="text" class="form-control" id="03" name="o3" placeholder="Masukkan Ukuran O3" required/>
+                     </div>
+                     <div class="col-md-6">
+                         <label for="no2">no2</label>
+                         <input type="text" class="form-control" id="no2" name="no2" placeholder="Masukkan Ukuran no2" required/>
+                     </div>
+                 </div>
+             </div>
+ 
+
+            
+            {%elif dataInputan== '' %}
+            <div class="form-group">
+                <div class="row">
+                 <div class="col-md-6">
+                     <label for="pm10">pm10</label>
+                     <input type="text" class="form-control" id="pm10" name="pm10" placeholder="Masukkan Ukuran Pm10 " required/>
+                 </div><div class="col-md-6">
+                     <label for="pm25">pm25</label>
+                 <input type="text" class="form-control" id="pm25" name="pm25" placeholder="Masukkan Ukuran Pm25" required/>
+ 
+                 </div>
+                </div>
+              </div>
+ 
+             <div class="form-group">
+                 <div class="row">
+                     <div class="col-md-6">
+                         <label for="so2">so2</label>
+                         <input type="text" class="form-control" id="so2" name="so2" placeholder="Masukkan Ukuran So2" required/>
+                     </div><div class="col-md-6">
+                         <label for="co">co</label>
+                         <input type="text" class="form-control" id="co" name="co" placeholder="Masukkan Ukuran Co" required/>
+                     </div>
+                 </div>
+             </div>
+              
+ 
+             <div class="form-group">
+                 <div class="row">
+                     <div class="col-md-6">
+                         <label for="o3">o3</label>
+                         <input type="text" class="form-control" id="03" name="o3" placeholder="Masukkan Ukuran O3" required/>
+                     </div>
+                     <div class="col-md-6">
+                         <label for="no2">no2</label>
+                         <input type="text" class="form-control" id="no2" name="no2" placeholder="Masukkan Ukuran no2" required/>
+                     </div>
+                 </div>
+             </div>
+ 
+
+            {%else %}
+            <div class="form-group">
+               <div class="row">
+                <div class="col-md-6">
+                    <label for="pm10">pm10</label>
+                    <input type="text" class="form-control" id="pm10" name="pm10" placeholder="Masukkan Ukuran Pm10 " required/>
+                </div><div class="col-md-6">
+                    <label for="pm25">pm25</label>
+                <input type="text" class="form-control" id="pm25" name="pm25" placeholder="Masukkan Ukuran Pm25" required/>
+
+                </div>
+               </div>
+             </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="so2">so2</label>
+                        <input type="text" class="form-control" id="so2" name="so2" placeholder="Masukkan Ukuran So2" required/>
+                    </div><div class="col-md-6">
+                        <label for="co">co</label>
+                        <input type="text" class="form-control" id="co" name="co" placeholder="Masukkan Ukuran Co" required/>
+                    </div>
+                </div>
+            </div>
+             
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="o3">o3</label>
+                        <input type="text" class="form-control" id="03" name="o3" placeholder="Masukkan Ukuran O3" required/>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="no2">no2</label>
+                        <input type="text" class="form-control" id="no2" name="no2" placeholder="Masukkan Ukuran no2" required/>
+                    </div>
+                </div>
+            </div>           
+            <div>
+                
+            </div>
+            {%endif%}
+            {%if resultKNN !=''%}
+                <p>Hasil : Kualitas udara {{resultKNN}} menggunakan metode kNN </p>
+                <p>Hasil : Kualitas udara {{resultNB}} menggunakan metode Naive Bayes </p>
+                <p>Hasil : Kualitas udara {{resultTree}} menggunakan metode Tree </p>
+            {%endif%}
+            <button type="submit" class="btn btn-primary">Prediksi</button>
+        </form>
+    </div>
+</body>
+</html>
